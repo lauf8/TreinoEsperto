@@ -85,7 +85,7 @@ public class Aluno {
 
     public boolean inserir(){
         ContentValues dados = new ContentValues();
-        dados.put("user",this.nome);
+        dados.put("nome",this.nome);
         dados.put("password", this.password);
         dados.put("endereco", this.endereco);
 
