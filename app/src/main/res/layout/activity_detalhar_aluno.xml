@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.047" />
 
     <Button
-        android:id="@+id/add_avaliacao_aluno"
+        android:id="@+id/btn_add_avaliacao_aluno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adicionar"
@@ -79,6 +79,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_avaliacao_aluno"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_avaliacao_aluno"
         app:layout_constraintVertical_bias="0.292" />
 </androidx.constraintlayout.widget.ConstraintLayout>
