@@ -2,6 +2,7 @@ package esperto.treino.Model;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import esperto.treino.Helper.DbHelper;
@@ -20,6 +21,7 @@ public class Aluno {
         this.password = password;
         this.endereco = endereco;
         db = new DbHelper(context);
+
         database = db.getWritableDatabase();
     }
 
@@ -76,6 +78,7 @@ public class Aluno {
         return database;
     }
 
+
     public void setDatabase(SQLiteDatabase database) {
         this.database = database;
     }
@@ -98,6 +101,18 @@ public class Aluno {
 
 
     }
+
+    public Cursor listar(){
+        String sql = "SELECT id as _id, nome From alunos;";
+        Cursor c = database.rawQuery(sql,null);
+
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+
 
 
 

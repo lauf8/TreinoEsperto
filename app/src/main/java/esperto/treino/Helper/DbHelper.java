@@ -29,7 +29,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateUser);
         String sqlCreateAluno = "create table alunos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(50), password VARCHAR(10),endereco VARCHAR(50));";
         db.execSQL(sqlCreateAluno);
-        String sqlCreateAvaliacao = "create table avaliacoes (id INTEGER PRIMARY KEY AUTOINCREMENT, id_aluno INTEGER, altura REAL,peso REAL, idade INTEGER,ombro INTEGER,peito INTEGER, braco_esquerdo INTEGER,braco_direito INTEGER,cintura INTEGER, quadril INTEGER, coxa_esquerda INTEGER, coxa_direita INTEGER,  FOREIGN KEY(id_aluno) REFERENCES alunos(id));";
+        String sqlCreateAvaliacao = "create table avaliacoes (id INTEGER PRIMARY KEY AUTOINCREMENT, id_aluno INTEGER, altura REAL,peso REAL, idade INTEGER,ombro INTEGER,peito INTEGER, braco_esquerdo INTEGER,braco_direito INTEGER,cintura INTEGER, quadril INTEGER, coxa_esquerda INTEGER, coxa_direita INTEGER,genero VARCHAR(15), data DATE,FOREIGN KEY(id_aluno) REFERENCES alunos(id));";
         db.execSQL(sqlCreateAvaliacao);
 
     }
@@ -55,3 +55,4 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 }
+
