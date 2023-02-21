@@ -8,11 +8,13 @@
 
     <TextView
         android:id="@+id/nome_aluno_avaliacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="44dp"
+        android:layout_height="14dp"
         android:text="Nome"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="61dp" />
+        app:layout_constraintBottom_toTopOf="@+id/campo_altura_avaliacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/campo_altura_avaliacao"

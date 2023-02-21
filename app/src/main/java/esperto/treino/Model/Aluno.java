@@ -112,6 +112,17 @@ public class Aluno {
         return c;
     }
 
+    public Cursor detalhar(String id){
+         String nome;
+
+        String sql = "SELECT id as _id, * From alunos where id = ?; ";
+        Cursor c = database.rawQuery(sql,new String[]{id+""});
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+
 
 
 
