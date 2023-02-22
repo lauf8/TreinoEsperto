@@ -9,7 +9,7 @@ import java.util.Date;
 import esperto.treino.Helper.DbHelper;
 
 public class Avaliacao {
-    private int id;
+    private Integer id;
     private int id_aluno;
     private int altura;
     private float peso;
@@ -32,7 +32,7 @@ public class Avaliacao {
 
     private SQLiteDatabase database;
 
-    public Avaliacao(int id, int id_aluno, int altura, float peso, int idade, int ombro,
+    public Avaliacao(Integer id, Integer id_aluno, int altura, float peso, int idade, int ombro,
                      int peito, int braco_esquerdo, int braco_direito, int cintura, int quadril,
                      int coxa_esquerda, int coxa_direita, String genero, Date data, Context context) {
         this.id = id;
