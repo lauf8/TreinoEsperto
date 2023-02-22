@@ -2,6 +2,7 @@ package esperto.treino.Model;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.Date;
@@ -208,6 +209,18 @@ public class Avaliacao {
         }
         return false;
 
+    }
+
+
+
+    public Cursor listarAvaliacao(String id){
+
+        String sql = "SELECT id as _id, data, peso, idade From avaliacoes where id_aluno = ?; ";
+        Cursor c = database.rawQuery(sql,new String[]{id+""});
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
     }
 
 }

@@ -32,7 +32,7 @@ public class Aluno_Index extends AppCompatActivity {
                 R.layout.listar_aluno,
                 cursor,
                 new String[]{"_id", "nome"},
-                new int[]{R.id.id, R.id.nome},0);
+                new int[]{R.id.data, R.id.peso},0);
 
         list_alunos.setAdapter(adapter);
 

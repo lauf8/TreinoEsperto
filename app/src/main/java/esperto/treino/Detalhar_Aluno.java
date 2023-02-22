@@ -8,17 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import esperto.treino.Helper.Convercao;
 import esperto.treino.Model.Aluno;
+import esperto.treino.Model.Avaliacao;
 
 public class Detalhar_Aluno extends AppCompatActivity {
 
     Button criar_ficha;
     TextView nome_aluno;
+    ListView list_avaliacao;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,21 @@ public class Detalhar_Aluno extends AppCompatActivity {
         nome_aluno = findViewById(R.id.nome_aluno_detalhar);
         String nome = cursor.getString(cursor.getColumnIndex("nome"));
         nome_aluno.setText(nome);
+
+
+        list_avaliacao = findViewById(R.id.avaliacoes_list);
+        Avaliacao avaliacao = new Avaliacao(Detalhar_Aluno.this);
+        Cursor cursor1 = avaliacao.listarAvaliacao(id);
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                Detalhar_Aluno.this,
+                R.layout.listar_avaliacao,
+                cursor1,
+                new String[]{"data", "peso", "idade"},
+                new int[]{R.id.data, R.id.peso, R.id.idade},0);
+
+        list_avaliacao.setAdapter(adapter);
+
 
 
 

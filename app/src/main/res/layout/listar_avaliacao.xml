@@ -7,9 +7,20 @@
 
 
     <TextView
+        android:id="@+id/idade"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="137dp"
+        android:layout_toRightOf="@id/data"
+        android:maxLines="1"
+        android:padding="3dp"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/data"
-        android:layout_width="25dp"
-        android:layout_height="50dp"
+        android:layout_width="131dp"
+        android:layout_height="41dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
@@ -19,9 +30,9 @@
 
     <TextView
         android:id="@+id/peso"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="31dp"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="21dp"
         android:layout_toRightOf="@id/data"
         android:maxLines="1"
         android:padding="3dp"

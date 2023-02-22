@@ -46,6 +46,7 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
         Aluno aluno = new Aluno(Criar_Avaliacao.this);
         Cursor cursor =aluno.detalhar(id);
         String nome = cursor.getString(cursor.getColumnIndex("nome"));
+        nome_aluno = findViewById(R.id.nome_aluno_avaliacao);
         nome_aluno.setText(nome);
 
         nome_aluno = findViewById(R.id.nome_aluno_avaliacao);
@@ -59,34 +60,9 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
         campo_quadril = findViewById(R.id.campo_quadril_avaliacao);
         campo_coxa_esquerda = findViewById(R.id.campo_coxa_esquerda_avaliacao);
         campo_coxa_direita = findViewById(R.id.campo_coxa_direita_avaliacao);
-        campo_genero = findViewById(R.id.campo_genero_avaliacao);
-
         criar_ficha = findViewById(R.id.btn_criar_avaliacao);
 
-        Spinner spinnerGenero = findViewById(R.id.campo_genero_avaliacao);
 
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.genero, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-
-
-
-
-        spinnerGenero.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String genero = parent.getItemAtPosition(position).toString();
-                // Aqui você pode usar o valor selecionado para criar sua query de inserção no banco de dados
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Faz nada aqui
-            }
-        });
 
         criar_ficha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +101,6 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
                 String coxa_direita = campo_coxa_direita.getText().toString();
                 int coxaDireitaInt = Integer.parseInt(coxa_direita);
 
-                String genero = campo_genero.getText().toString();
 
                 int idInt = Integer.parseInt(id);
 
@@ -150,16 +125,23 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
                         quadrilInt,
                         coxaEsquerdaInt,
                         coxaDireitaInt,
-                        genero,
+                        "Masculino",
                         dataHoje,
                         Criar_Avaliacao.this
                         );
 
-                avaliacao.criarAvaliacao();
+                if(avaliacao.criarAvaliacao()){
+                    Intent main =
+                            new Intent(Criar_Avaliacao.this, Aluno_Index.class);
+                    startActivity(main);
+                }
+
 
 
 
             }
+
+
         });
 
 
@@ -173,7 +155,6 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-        String genero =
 
     }
 
