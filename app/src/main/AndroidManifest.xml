@@ -12,6 +12,9 @@
         android:theme="@style/Theme.TreinoEsperto"
         tools:targetApi="31">
         <activity
+            android:name=".Detalhar_Ficha"
+            android:exported="false" />
+        <activity
             android:name=".Criar_Avaliacao"
             android:exported="false"
             android:label="@string/title_activity_criar_avaliacao"

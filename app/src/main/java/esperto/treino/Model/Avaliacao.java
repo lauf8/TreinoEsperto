@@ -223,4 +223,51 @@ public class Avaliacao {
         return c;
     }
 
+    public Cursor detalharAvaliacao(String id){
+
+        String sql = "SELECT id as _id, * From avaliacoes where id = ?; ";
+        Cursor c = database.rawQuery(sql,new String[]{id+""});
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+    public String imc(int altura, Float peso){
+        double altura1 = (double) altura;
+        double alturaImc = altura1/100;
+
+        double imc = peso / (alturaImc*alturaImc);
+
+        String classificacao;
+        String risco = "";
+
+        if (imc < 16) {
+            classificacao = "Magreza Grau III";
+        } else if (imc >= 16 && imc < 16.9) {
+            classificacao = "Magreza Grau II";
+        } else if (imc >= 17 && imc < 18.4) {
+            classificacao = "Magreza Grau I";
+        } else if (imc >= 18.5 && imc < 25) {
+            classificacao = "Eutrofia";
+        } else if (imc >= 25 && imc < 30) {
+            classificacao = "Sobrepeso";
+            risco = "Seu Risco é aumentado, cuide da alimentação e faça mais exercicios";
+        } else if (imc >= 30 && imc < 35) {
+            classificacao = "Obesidade Grau I";
+            risco = "Seu Risco é moderado, cuide da alimentação e faça mais exercicios";
+        } else if (imc >= 35 && imc < 40) {
+            classificacao = "Obesidade Grau II, procure um médico imendiatamente, sua saúde está em risco";
+            risco = "Grave";
+        } else {
+            classificacao = "Obesidade Grau III, procure um médico imendiatamente, sua saúde está em risco";
+            risco = "Muito";
+        }
+
+        double imcArredondado = Math.round(imc);
+        String imcString = String.valueOf(imcArredondado);
+
+        return imcString + " \n" + classificacao + "\n " + "\n" + risco;
+
+    }
 }

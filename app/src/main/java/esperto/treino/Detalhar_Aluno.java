@@ -51,6 +51,18 @@ public class Detalhar_Aluno extends AppCompatActivity {
 
         list_avaliacao.setAdapter(adapter);
 
+        list_avaliacao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(Detalhar_Aluno.this, id+"", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(Detalhar_Aluno.this, Detalhar_Ficha.class);
+                it.putExtra("id", id+"");
+                startActivity(it);
+
+            }
+        });
+
 
 
 

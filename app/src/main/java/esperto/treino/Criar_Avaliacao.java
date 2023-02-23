@@ -135,20 +135,8 @@ public class Criar_Avaliacao extends AppCompatActivity implements AdapterView.On
                             new Intent(Criar_Avaliacao.this, Aluno_Index.class);
                     startActivity(main);
                 }
-
-
-
-
             }
-
-
         });
-
-
-
-
-
-
     }
 
     @Override
