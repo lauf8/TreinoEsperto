@@ -2,23 +2,23 @@ package esperto.treino.Model;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import esperto.treino.Helper.DbHelper;
 
 public class TreinoExercicio {
-    private int id;
+    private Integer id;
     private int id_exercicio;
     private int id_treino;
 
     private SQLiteDatabase database;
     private DbHelper db;
 
-    public TreinoExercicio(int id, int id_exercicio, int id_treino, String repeticoes, Context context) {
+    public TreinoExercicio(Integer id, int id_exercicio, int id_treino, Context context) {
         this.id = id;
         this.id_exercicio = id_exercicio;
         this.id_treino = id_treino;
-
         this.database = database;
         this.db = db;
         db = new DbHelper(context);
@@ -85,5 +85,24 @@ public class TreinoExercicio {
             return true;
         }
         return false;
+    }
+
+    public Cursor listarTreinoExercicio(String id){
+        String sql = "SELECT treinos.id as _id, exercicios.nome, exercicios.grupo_muscular FROM exercicios INNER JOIN treino_exercicios ON exercicios.id = treino_exercicios.id_exercicio INNER JOIN treinos ON treino_exercicios.id_treino = treinos.id Where treinos.id = ?;";
+        Cursor c = database.rawQuery(sql,new String[]{id+""});
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+
+    public Cursor listarTreinoExercicioNaoListados(String id){
+
+        String sql = "SELECT treinos.id as _id, exercicios.id, exercicios.nome, exercicios.grupo_muscular FROM exercicios, treino_exercicios, treinos WHERE exercicios.id = treino_exercicios.id_exercicio AND treino_exercicios.id_treino = treinos.id AND treino_exercicios.id_treino = 1 AND treinos.id != ?; ";
+        Cursor c = database.rawQuery(sql,new String[]{id+""});
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c;
     }
 }

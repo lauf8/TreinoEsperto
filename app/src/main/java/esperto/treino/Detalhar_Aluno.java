@@ -19,7 +19,7 @@ import esperto.treino.Model.Treino;
 
 public class Detalhar_Aluno extends AppCompatActivity {
 
-    Button criar_ficha;
+    Button criar_ficha, criar_treino;
     TextView nome_aluno;
     ListView list_avaliacao;
     @Override
@@ -72,7 +72,7 @@ public class Detalhar_Aluno extends AppCompatActivity {
                 R.layout.listar_treino,
                 cursor2,
                 new String[]{"nome", "repeticoes"},
-                new int[]{R.id.repeticoes_treino, R.id.nome_treino},
+                new int[]{R.id.nome_treino_detalhar_list, R.id.treino_repeticao},
                 0);
 
         list_treino.setAdapter(adapter2);
@@ -82,21 +82,29 @@ public class Detalhar_Aluno extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Toast.makeText(Detalhar_Aluno.this, id+"", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(Detalhar_Aluno.this, Detalhar_Ficha.class);
+                Intent it = new Intent(Detalhar_Aluno.this, Detatalhar_Treino.class);
                 it.putExtra("id", id+"");
                 startActivity(it);
-
             }
         });
 
 
 
-
+        criar_treino = findViewById(R.id.add_treino_aluno);
 
         criar_ficha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Detalhar_Aluno.this, Criar_Avaliacao.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+
+        criar_treino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Detalhar_Aluno.this, Criar_Treino.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }

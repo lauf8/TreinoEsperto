@@ -62,17 +62,9 @@ public class Detalhar_Ficha extends AppCompatActivity {
         quadril_t.setText(quadril + " cm");
         coxa_e_t.setText(coxa_esquerda + " cm");
         coxa_d_t.setText(coxa_direita + " cm");
-
         int alturaInt = Integer.parseInt(altura);
         float pesoFloat = Float.parseFloat(peso);
-
         String imc = avaliacao.imc(alturaInt, pesoFloat);
         imc_t.setText(imc);
-
-
-
-
-
-
     }
 }
