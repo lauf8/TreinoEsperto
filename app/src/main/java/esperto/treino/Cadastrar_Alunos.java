@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import esperto.treino.Model.Aluno;
-import esperto.treino.Model.User;
 
 public class Cadastrar_Alunos extends AppCompatActivity {
     EditText campo_nome, campo_senha, campo_endereco;
@@ -19,10 +18,10 @@ public class Cadastrar_Alunos extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_alunos);
-        campo_nome =  findViewById(R.id.campo_cadastar_aluno_nome);
-        campo_senha = findViewById(R.id.campo_cadastar_aluno_senha);
+        campo_nome =  findViewById(R.id.campo_nome_treino);
+        campo_senha = findViewById(R.id.campo_nome_repeticoes_treino);
         campo_endereco = findViewById(R.id.campo_cadastar_aluno_endereco);
-        btn_cadastrar_alunos = findViewById(R.id.btn_cadastrar_alunos);
+        btn_cadastrar_alunos = findViewById(R.id.btn_cadastrar_treino);
 
         btn_cadastrar_alunos.setOnClickListener(new View.OnClickListener() {
             @Override

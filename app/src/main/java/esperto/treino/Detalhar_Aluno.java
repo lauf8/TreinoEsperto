@@ -13,9 +13,9 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import esperto.treino.Helper.Convercao;
 import esperto.treino.Model.Aluno;
 import esperto.treino.Model.Avaliacao;
+import esperto.treino.Model.Treino;
 
 public class Detalhar_Aluno extends AppCompatActivity {
 
@@ -52,6 +52,32 @@ public class Detalhar_Aluno extends AppCompatActivity {
         list_avaliacao.setAdapter(adapter);
 
         list_avaliacao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(Detalhar_Aluno.this, id+"", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(Detalhar_Aluno.this, Detalhar_Ficha.class);
+                it.putExtra("id", id+"");
+                startActivity(it);
+
+            }
+        });
+
+        ListView list_treino = findViewById(R.id.treinos_list);
+        Treino treino = new Treino(Detalhar_Aluno.this);
+        Cursor cursor2 = treino.listarTreino(id);
+
+        SimpleCursorAdapter adapter2 = new SimpleCursorAdapter(
+                Detalhar_Aluno.this,
+                R.layout.listar_treino,
+                cursor2,
+                new String[]{"nome", "repeticoes"},
+                new int[]{R.id.repeticoes_treino, R.id.nome_treino},
+                0);
+
+        list_treino.setAdapter(adapter2);
+
+        list_treino.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import esperto.treino.Model.Aluno;
 
 public class Aluno_Index extends AppCompatActivity {
-    Button cadastro_alunos;
+    Button cadastro_alunos, criar_treino;
     ListView list_alunos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class Aluno_Index extends AppCompatActivity {
         setContentView(R.layout.activity_aluno_index);
 
         cadastro_alunos = findViewById(R.id.add_alunos);
+
         list_alunos = findViewById(R.id.list_alunos);
         Aluno aluno = new Aluno(Aluno_Index.this);
         Cursor cursor =aluno.listar();
@@ -56,6 +57,8 @@ public class Aluno_Index extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
 
